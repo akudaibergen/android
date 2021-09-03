@@ -1,0 +1,105 @@
+movieAdapter.moviesList = listMovie
+            movieAdapter.notifyDataSetChanged()
+            swipeRefreshLayout.isRefreshing = false
+
+
+recyclerView.addOnScrollListener( object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+//                if(dy>0){
+//                    val visibleItemCount = linearLayoutManager.childCount
+//                    val pastVisibleItem = linearLayoutManager.findFirstCompletelyVisibleItemPosition()
+//                    val total = linearLayoutManager.itemCount
+//                    if(!isLoading) {
+//                        if((visibleItemCount + pastVisibleItem) >= total){
+//                            currentPage++
+//                            loadNextPage()
+//
+//                        }
+//                    }
+//                }
+            }
+        })
+
+
+private fun loadNextPage() {
+        isLoading = true
+        progressBar.visibility = View.VISIBLE
+        var start = currentPage*10
+        var end = (currentPage+1)*10
+        Handler().postDelayed({
+            if(::movieAdapter.isInitialized) {
+                movieAdapter.notifyDataSetChanged()
+            }
+            else{
+                movieAdapter.addList(listMovie?.subList(start,end))
+                movieAdapter.notifyDataSetChanged()
+            }
+            isLoading = false
+            progressBar.visibility = View.GONE
+        },2000)
+    }
+
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/main_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="always">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="40dp"/>
+            <ProgressBar
+                android:visibility="visible"
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+<LinearLayout
+android:layout_below="@id/toolbar"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="asdasdasd"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</LinearLayout>
+
+//        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+//                var firsPageCount = layoutManager.findFirstCompletelyVisibleItemPosition()
+//                var totalPageCount = layoutManager.itemCount
+//                var lastPageCount = layoutManager.findLastCompletelyVisibleItemPosition()
+//                if (totalPageCount <= lastPageCount + 1 && totalPageCount!=listMovie!!.size-1) {
+//                    currentPage++
+//                    loadNextPage()
+//                    Toast.makeText(this@MainActivity, "good $totalPageCount $lastPageCount ${listMovie!!.size-1}", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        })

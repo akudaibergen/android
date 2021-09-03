@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_q_shop"
+            android:icon="@drawable/ic_shop"
+            android:title="Q-shop" />
+        <item
+            android:id="@+id/nav_q_video"
+            android:icon="@drawable/ic_menu_tv"
+            android:title="Q-video"/>
+        <item
+            android:id="@+id/nav_q_music"
+            android:icon="@drawable/ic_menu_music"
+            android:title="Q-music" />
+        <item
+            android:id="@+id/nav_q_books"
+            android:icon="@drawable/ic_menu_book"
+            android:title="Q-books" />
+        <item
+            android:id="@+id/nav_q_food"
+            android:icon="@drawable/ic_menu_pizza"
+            android:title="Q-food" />
+    </group>
+</menu>

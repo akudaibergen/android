@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_q_shop">
+
+    <fragment
+        android:id="@+id/nav_q_shop"
+        android:name="com.example.qstyle.ui.shop.ShopFragment"
+        android:label="Q-shop"
+        tools:layout="@layout/fragment_shop" />
+
+    <fragment
+        android:id="@+id/nav_q_video"
+        android:name="com.example.qstyle.ui.video.VideoFragment"
+        android:label="Q-video"
+        tools:layout="@layout/fragment_video" />
+
+    <fragment
+        android:id="@+id/nav_q_music"
+        android:name="com.example.qstyle.ui.music.MusicFragment"
+        android:label="Q-music"
+        tools:layout="@layout/fragment_music" />
+    <fragment
+        android:id="@+id/nav_q_books"
+        android:name="com.example.qstyle.ui.book.BookFragment"
+        android:label="Q-books"
+        tools:layout="@layout/fragment_book" />
+    <fragment
+        android:id="@+id/nav_q_food"
+        android:name="com.example.qstyle.ui.food.FoodFragment"
+        android:label="Q-food"
+        tools:layout="@layout/fragment_food" />
+</navigation>
